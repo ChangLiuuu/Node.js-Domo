@@ -10,12 +10,14 @@ var server = http.createServer(function (req, res) {
     // data - 有一段数据到达(很多次)
     var i = 0;
     req.on('data', function (data) {
-        console.log("第${i++}次接收数据:");
+        console.log(i++);
         str += data;
     });
     // end - 数据全部到达(一次)
+    // querystring.parse('URL') 切割 = & 成 JSON 对象了
     req.on('end', function () {
-        querystring.parse();
         console.log(str);
+        var POST = querystring.parse(str);
+        console.log(POST);
     })
 }).listen(8080);
