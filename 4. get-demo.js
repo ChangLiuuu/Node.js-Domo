@@ -7,7 +7,7 @@
 
 //请求方式：1. GET : 数据在url中 2. POST：数据不在url中
 
-    // 使用querystring parse URL
+    // 使用querystring parse URL 只能解析 query部分 xxx=y&xxxx=rrr
 const http = require('http');
 const quarystring = require('querystring');
 var server = http.createServer(function (req, res) {
@@ -60,20 +60,3 @@ var server1 = http.createServer(function (req, res) {
     var GET = obj2.query;
     console.log(GET);
 }).listen(8080);
-// const http = require('http');
-// const urlLib = require('url');
-// var server = http.createServer(function (req, res) {
-//     var GET = {};
-//     var urladd;
-//     if (req.url.indexOf('?') !== -1) {
-//         var arr = req.url.split('?');
-//         urladd = arr[0];
-//         GET = quarystring.parse(arr[1]);
-//
-//     } else {
-//         urladd = req.url;
-//     }
-//     console.log(urladd ,'-----' , GET);
-//     res.write('aaa');
-//     res.end();
-// })
