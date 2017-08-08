@@ -29,3 +29,29 @@
 * }, 100 );
 * 14. ZLIB :zip lib  做压缩的 1. 老的文件压缩完再存储 2. 压缩完发给用户
 * */
+
+// require 引入模块
+// module  模块
+// exports 导出
+
+// npm 统一下载 自动解决一来
+// node_modules 文件夹node
+
+exports.a = 2;
+exports.b = 2;
+exports.c = 2;
+
+module.exports = {
+    a : 3,
+    b : 3,
+    c : 3
+}
+
+/*
+* 自定义模块：
+* npm login
+* npm whoami
+* 进入文件夹里，npm init
+* npm publish
+*
+* */
