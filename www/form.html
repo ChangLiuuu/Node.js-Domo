@@ -3,15 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>form</title>
+	<script src="ajax.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+				var oTxtUser = document.getElementById('name');
+				var oTxtPass = document.getElementById('pass');
+				var oBtnReg = document.getElementById('reg_btn');
+				var oBtnLogin = document.getElementById('login_btn');
+
+				oBtnReg.onclick = function () {
+						ajax({
+								url: '/user',
+								data: {act: 'reg', name: oTxtUser.value, pass: oTxtPass.value},
+								type: 'get',
+								success: function (str) {
+								    console.log(str)
+                    var json=eval('('+str+')');
+
+										if (json.ok) {
+										    alert('注册成功');
+										} else {
+										    alert('注册失败:' + json.msg);
+										}
+                },
+                error: function () {
+										alert('注册失败：' + json.msg);
+                }
+						});
+        };
+    }
+	</script>
 </head>
 <body>
-	<form action="http://localhost:8080/aaa" method="post">
+	<!--<form action="http://localhost:8080/form.html" method="post">-->
 		<h3>User:</h3>
-		<input type="text" name="user" value=""><br>
+		<input type="text" name="user" id="name"><br>
 		<h3>Password:</h3>
-		<input type="password" name="password" value=""><br>
-		<textarea name="text"  cols="30" rows="10"></textarea>
-		<input type="submit" value="Submit">
-	</form>
+		<input type="password" name="password" id="pass"><br>
+		<!--<textarea name="text"  cols="30" rows="10" id="textarea"></textarea>-->
+		<input type="button" value="注册" id="reg_btn">
+		<input type="button" value="登录" id="login_btn">
+	<!--</form>-->
 </body>
 </html>
