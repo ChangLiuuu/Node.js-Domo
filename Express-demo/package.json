@@ -4,7 +4,8 @@
   "description": "this is a express-demo",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "express-static": "^1.2.4"
   },
   "devDependencies": {},
   "scripts": {

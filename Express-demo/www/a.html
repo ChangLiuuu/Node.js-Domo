@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="ajax.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+				var oUser = document.getElementById('user');
+				var oPass = document.getElementById('pass');
+				var oBtn = document.getElementById('btn1');
+
+				oBtn.onclick = function () {
+						ajax({
+								url: '/login',
+								data: {user: oUser.value, pass: oPass.value},
+								success: function (str) {
+
+										var json = eval('('+str+')');
+										if (json.ok) {
+										    alert('success');
+										} else {
+										    alert('failed:' + json.msg);
+										}
+                },
+								error: function () {
+										alert('communicate failed');
+                }
+
+						});
+        };
+    };
+	</script>
+</head>
+<body>
+User: <input type="text" id="user" /><br>
+Password: <input type="password" id="pass" /><br>
+<input type="button" value="denglu" id="btn1">
+</body>
+</html>
