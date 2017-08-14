@@ -16,7 +16,7 @@
 								data: {user: oUser.value, pass: oPass.value},
 								success: function (str) {
 
-										var json = eval('('+str+')');
+										var json = eval('('+str+')');  // 计算字符串
 										if (json.ok) {
 										    alert('success');
 										} else {
