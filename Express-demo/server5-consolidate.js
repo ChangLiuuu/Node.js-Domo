@@ -11,6 +11,7 @@ const bodyParser=require('body-parser');
 const multer=require('multer');
 const ejs=require('ejs');
 const jade=require('jade');
+const consolidate = require('consolidate');
 
 var server=express();
 
@@ -34,10 +35,23 @@ server.use(cookieSession({
 server.use(bodyParser.urlencoded({extended : false}));
 server.use(multer({dest : '.www/upload'}).any());
 
-// 用户请求
-server.use('/', function (req, res, next) {
-   console.log(req.query, req.body, req.files, req.cookies, req.session) ;
-});
 
-// 4.static数据
+// 4. 配置模板引擎
+  //1用哪种模板引擎，输出什么东西
+    server.set('view engine', 'html');
+  //2模板文件在哪
+    server.set('views', './views');
+  //3那种模板引擎
+    server.engine('html', consolidate.ejs);
+
+// 用户请求
+// server.use('/', function (req, res, next) {
+//    console.log(req.query, req.body, req.files, req.cookies, req.session) ;
+// });
+    server.get('/', function (req, res) {
+       res.render('1.ejs', {name : 'chang'});
+    });
+
+
+// 5.static数据
 server.use(expressStatic('www'));
